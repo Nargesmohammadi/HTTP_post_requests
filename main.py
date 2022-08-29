@@ -36,9 +36,18 @@ today = datetime(year=2022, month=8, day=29)
 
 
 date_params = {
-    "date": today.strftime("%Y%m%d"),
+    "date": today.strftime('%Y%m%d'),
     "quantity": "2.5",  # the time that I'm walking today.
 }
 
-response = requests.post(url=pixel_creation_end, json=pixela_end, headers=headers)
+
+update_end = f"{pixela_end}/{USERNAME}/graphs/{GRAPH}/{today.strftime('%Y%m%d')}"
+
+# new pixel data:
+update_params = {
+    "quantity": "3.5"
+}
+
+
+response = requests.post(url=update_end, json=update_params, headers=headers)
 print(response.text)
