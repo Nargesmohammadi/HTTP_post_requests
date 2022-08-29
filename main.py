@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 USERNAME = ""
 TOKEN = ""
@@ -31,8 +32,11 @@ headers = {
 # print(response.text)
 pixel_creation_end = f"{pixela_end}/{USERNAME}/graphs/{GRAPH}"
 
+today = datetime(year=2022, month=8, day=29)
+
+
 date_params = {
-    "date": "20220829",
+    "date": today.strftime("%Y%m%d"),
     "quantity": "2.5",  # the time that I'm walking today.
 }
 
