@@ -1,8 +1,8 @@
 import requests
 
-USERNAME = "casi"
-TOKEN = "hkhui23vy4ubnj2ub4ui5jkkh8ooe7940hn684bu3639jf"
-
+USERNAME = ""
+TOKEN = ""
+GRAPH = "graph1"
 pixela_end = "https://pixe.la//v1/users"
 user_params = {
     "token": TOKEN,
@@ -16,9 +16,9 @@ user_params = {
 graph_end = f"{pixela_end}/{USERNAME}/graphs"
 
 graph_config = {
-    "id": "graph1",
-    "name": "Reading Graph",
-    "until": "h",
+    "id": GRAPH,
+    "name": "Walking Graph",
+    "until": "km",
     "type": "float",
     "color": "ajisai"
 }
@@ -26,5 +26,15 @@ graph_config = {
 headers = {
     "X-USER-TOKEN": TOKEN
 }
-response = requests.post(url=graph_end, json=graph_config, headers=headers)
+
+# response = requests.post(url=graph_end, json=graph_config, headers=headers)
+# print(response.text)
+pixel_creation_end = f"{pixela_end}/{USERNAME}/graphs/{GRAPH}"
+
+date_params = {
+    "date": "20220829",
+    "quantity": "2.5",  # the time that I'm walking today.
+}
+
+response = requests.post(url=pixel_creation_end, json=pixela_end, headers=headers)
 print(response.text)
